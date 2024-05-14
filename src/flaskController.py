@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 
 # OpenAI API Key 
-OPENAI_API_KEY = "sk-proj-67o9ARwUNPngj69gW2LiT3BlbkFJxCf6OmyYRCETIMwK54aQ"
+OPENAI_API_KEY = "Secret-key"
 
 # API links
 API_LINKS = ['http://numbersapi.com/random/trivia',
