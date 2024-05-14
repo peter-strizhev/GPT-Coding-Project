@@ -1,0 +1,68 @@
+Instructions:
+    Write a demo app that uses the OpenAI api to do the following:
+
+    * take as input a user’s request to hear a fun fact about a certain number
+    * have GPT generate a function call to this api: numbersapi.com/#random/math
+    * execute the api and have GPT return a response to the user You may write this in any language.
+
+    If you wish you may use an AI coding assistant, but if you do make sure you have understood and 
+    vetted any code it generated for you. As a bonus, provide ideas for how the above could be done 
+    using methods other than hitting the OpenAI API. If you need an openai API key let me know and we 
+    can provide you one.
+
+
+
+Data pipeline [IGNORE]
+- user input / query (white text) is gathered from web interface
+    - maybe add parameters for user queries, accessing random/(trivia, year, date, math)
+        - simple boolean values to adjust api call query
+        - http://numbersapi.com/random/trivia
+    - Add bool for long or short answers
+    - some sort of concatination script to remove unneeded wording sussing out just the query
+    - if have time, format webUI as chat interface
+    - handle requests for trivia for specific number
+        - can be done with numbers api: http://numbersapi.com/496/trivia
+    - handle user input to close program
+        - "goodbye" or similar will trigger shutdown
+- user input is submitted via a form or live chat box through flask
+- input is saved to local DB (can be used for answer optimization and for caching)
+    - Heatmap can be generated based off queries
+- hit numbers api given trivia/year/date/math param
+- store returned data in db
+- have gpt interpreit the fact and provide a response based off user length specification.
+    - if long answer is selected, gpt will be queried to expand on the fact
+    - if short answer is selected, direct fact response will be provided to user
+
+
+Browser will auto open to FLASK url
+    - will need to test on clean environment to make sure this works, also will need to provide instructions
+      on what to do if browser doesnt open
+
+Have to figure out regular chat requests 
+
+main structure
+    - check for internet connection | Done
+    - start and await flask boot 
+    - open interface with DB
+    - check gpt API key
+        - if no api keys prompt user for gpt api key and numbers api key
+        - write keys to keys.ini
+    - figure out way to check if user has browser with flask window open
+    - if window closed
+        - save any suspended data to db
+
+Okay so I found out that the project is not a 2 day project and more of an 8 hour project
+going to cut a bunch of stuff
+
+MVP:
+    - "Working UI" - Done
+    - Commented code - Done
+    - User Input -> GPT makes function call - Done
+    - GPT Elaborates on the result - Done
+    - Result is displayed to user - Done
+
+Cutting out:
+    Streamed chat (GPT remembering previous questions and queries)
+    Data pipeline and optimization (maybe some as a treat)
+    Basically most of the stuff is cut out other than MVP
+        Going to continue on this after submission because its a fun project
